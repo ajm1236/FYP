@@ -7,12 +7,11 @@ public class SpriteCharacter : MonoBehaviour
     private float hoz;
     private float speed = 8f;
     private float jump = 16f;
-    private bool isRight = true;
+    //private bool isRight = true;
 
     [SerializeField] private Rigidbody2D body;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    // Start is called before the first frame update
     void Start()
     {
         
