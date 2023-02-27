@@ -49,7 +49,7 @@ public class CameraFollow : MonoBehaviour
         }
 
         Vector3 targetPos = (target.position + aheadPos + Vector3.forward * offset);
-        //targetPos.y += 12;
+        targetPos.y += 6;
         Vector3 nicePos = Vector3.SmoothDamp(transform.position, targetPos, ref velocity, smooth);
         nicePos = new Vector3(nicePos.x, Mathf.Clamp(nicePos.y, cameraDeathPos, Mathf.Infinity), nicePos.z);
         transform.position = nicePos;

@@ -15,8 +15,7 @@ public class SpriteCharacter : MonoBehaviour
     public float knockTime;
     public bool knockRight;
     public float cooldownTime = 3f;
-    public bool isCooldownJump;
-    public bool isCooldownWalk;
+    public bool isCooldownJump, isCooldownWalk, isCooldownBuff;
     bool grounded = false;
 
     [SerializeField] private Rigidbody2D body;
@@ -77,6 +76,11 @@ public class SpriteCharacter : MonoBehaviour
             controller.Boombox("Walk");
             StartCoroutine(WalkCooldown());
 
+        }
+
+        if(speed > 25)
+        {
+            StartCoroutine(BuffCooldown());
         }
     }
 
@@ -141,6 +145,12 @@ public class SpriteCharacter : MonoBehaviour
         isCooldownWalk = true;
         yield return new WaitForSeconds(0.7f);
         isCooldownWalk = false;
+    }
+    
+    IEnumerator BuffCooldown()
+    {
+        yield return new WaitForSeconds(5);
+        speed = 25;
     }
 
 }
