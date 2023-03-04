@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - GS
+  - Weak Point
+  - Damage
   layers:
   - Default
   - TransparentFX
@@ -15,7 +17,7 @@ TagManager:
   - Player
   - Ground
   - Ceiling
-  - 
+  - Spike
   - 
   - 
   - 
@@ -50,6 +52,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3125984135
+    locked: 0
+  - name: Spike
+    uniqueID: 516829827
     locked: 0
   - name: Foreground
     uniqueID: 1984254241

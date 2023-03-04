@@ -14,23 +14,31 @@ public class EnemyMove : MonoBehaviour
     public bool isTracking;
     public float trackDistance;
     bool isRight = false;
+    float scalex, scalez, scaley;
 
-
+    private void Awake()
+    {
+        scalex = transform.localScale.x;
+        scaley = transform.localScale.y;
+        scalez = transform.localScale.z;
+    }
+    
     // Update is called once per frame
     void Update()
     {
+       
         if(Vector2.Distance(transform.position, player.position) < trackDistance)
         {
             
             if (transform.position.x > player.position.x)
             {
-                transform.localScale = new Vector3(-1, 1, 1);
+                transform.localScale = new Vector3(scalex, scaley, scalez);
                 transform.position += Vector3.left * speed * Time.deltaTime;
 
             }
             if (transform.position.x < player.position.x)
             {
-                transform.localScale = new Vector3(1, 1, 1);
+                transform.localScale = new Vector3(-scalex, scaley, scalez);
                 transform.position += Vector3.right * speed * Time.deltaTime;
             }
         }

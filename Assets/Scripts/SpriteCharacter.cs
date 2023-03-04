@@ -24,9 +24,12 @@ public class SpriteCharacter : MonoBehaviour
     Transform playerRender;
     Animator animate;
     AudioController controller;
+    TrailRenderer trail;
 
     void Awake()
     {
+        trail = GetComponent<TrailRenderer>();
+        trail.enabled = false;
         animate = GetComponent<Animator>();
         playerRender = transform.Find("PlayerRenderer");
     }
@@ -39,7 +42,6 @@ public class SpriteCharacter : MonoBehaviour
         {
             Debug.LogError("ahhhhhhhhhhhh");
         }
-
     }
 
     // Update is called once per frame
@@ -75,11 +77,11 @@ public class SpriteCharacter : MonoBehaviour
         {
             controller.Boombox("Walk");
             StartCoroutine(WalkCooldown());
-
         }
 
         if(speed > 25)
         {
+            trail.enabled = true;
             StartCoroutine(BuffCooldown());
         }
     }
@@ -89,7 +91,6 @@ public class SpriteCharacter : MonoBehaviour
         if (knockCount <= 0)
         {
             body.velocity = new Vector2(hoz * speed, body.velocity.y);
-
         }
         else
         {
@@ -101,7 +102,6 @@ public class SpriteCharacter : MonoBehaviour
             {
                 body.velocity = new Vector2(knockForce + 5, knockForce/2);
             }
-
             knockCount -= Time.deltaTime;
         }
         hoz = Input.GetAxisRaw("Horizontal");
@@ -117,14 +117,11 @@ public class SpriteCharacter : MonoBehaviour
         {
             Flip();
         }
-
     }
-
     //private bool IsGrounded()
     //{
     //    return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
     //}
-
     void Flip()
     {
         Vector3 scale = transform.localScale;
@@ -151,6 +148,7 @@ public class SpriteCharacter : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         speed = 25;
+        trail.enabled = false;
     }
 
 }

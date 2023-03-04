@@ -26,11 +26,20 @@ public class HealthBar : MonoBehaviour
             size = 1;
             bar.localScale = new Vector2(size, 1f);
         }
-        if(size <= 0.5f)
+        if (size > 0.5f)
+        {
+            barImage.color = new Color32(0, 255, 0, 100);
+
+        }
+        if (size <= 0.5f)
         {
             barImage.color = new Color32(255, 165, 0, 100);
         }
-        if(size <= 0.3f)
+        if (size > 0.3f && size <= 0.5f)
+        {
+            barImage.color = new Color32(255, 165, 0, 100);
+        }
+        if (size <= 0.3f)
         {
             barImage.color = Color.red;
         }
