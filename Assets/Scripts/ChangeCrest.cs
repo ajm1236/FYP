@@ -17,5 +17,9 @@ public class ChangeCrest : MonoBehaviour
         {
             crest.sprite = counties[1];
         }
+        if (collision.transform.tag == "Donegal")
+        {
+            crest.sprite = counties[2];
+        }
     }
 }

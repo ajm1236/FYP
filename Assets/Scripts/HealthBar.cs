@@ -45,6 +45,8 @@ public class HealthBar : MonoBehaviour
         }
         if(size <= 0.0f)
         {
+            size = 0;
+            bar.localScale = new Vector2(size, 1f);
             barImage.color = Color.gray;
         }
 

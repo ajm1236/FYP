@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6370182334567942937}
   m_Layer: 0
   m_Name: AudioController
-  m_TagString: Untagged
+  m_TagString: Audio
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6370182334567942937
 MonoBehaviour:
@@ -51,6 +51,7 @@ MonoBehaviour:
     ranPit: 0
     ranVol: 0
     clip: {fileID: 8300000, guid: 6cd04a273d08ee04689e325d2ae0da4c, type: 3}
+    grouped: {fileID: 24300002, guid: 5a4c32e719f105e43908b4a32bd3940f, type: 2}
     isLoop: 1
   - soundName: Hover
     volume: 0.1
@@ -58,6 +59,7 @@ MonoBehaviour:
     ranPit: 0
     ranVol: 0
     clip: {fileID: 8300000, guid: 19f89c6e740e7447f9e12a8310d3e973, type: 3}
+    grouped: {fileID: 24300002, guid: 5a4c32e719f105e43908b4a32bd3940f, type: 2}
     isLoop: 0
   - soundName: Press
     volume: 0.1
@@ -65,11 +67,21 @@ MonoBehaviour:
     ranPit: 0
     ranVol: 0
     clip: {fileID: 8300000, guid: ffb159a21c8a04135a5616979c828fab, type: 3}
+    grouped: {fileID: 24300002, guid: 5a4c32e719f105e43908b4a32bd3940f, type: 2}
     isLoop: 0
   - soundName: Jump
     volume: 0.2
     pitch: 1
-    ranPit: 0
-    ranVol: 0
+    ranPit: 0.1
+    ranVol: 0.1
     clip: {fileID: 8300000, guid: 653d2cb9206fda54f8d8879d6e7f0aa2, type: 3}
+    grouped: {fileID: 24300002, guid: 5a4c32e719f105e43908b4a32bd3940f, type: 2}
+    isLoop: 0
+  - soundName: Walk
+    volume: 0.2
+    pitch: 1
+    ranPit: 0.531
+    ranVol: 0.1
+    clip: {fileID: 8300000, guid: eec53751c4e79a7469fc34e774360128, type: 3}
+    grouped: {fileID: 24300002, guid: 5a4c32e719f105e43908b4a32bd3940f, type: 2}
     isLoop: 0

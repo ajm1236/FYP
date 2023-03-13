@@ -13,7 +13,6 @@ public class EnemyMove : MonoBehaviour
     public Transform player;
     public bool isTracking;
     public float trackDistance;
-    bool isRight = false;
     float scalex, scalez, scaley;
 
     private void Awake()
@@ -55,14 +54,6 @@ public class EnemyMove : MonoBehaviour
             }
         }
 
-        void Flip()
-        {
-            isRight = !isRight;
-            Vector3 tmpScale = gameObject.transform.localScale;
-            tmpScale.x *= -1;
-            gameObject.transform.localScale = tmpScale;
-        }
     }
-    
 
 }

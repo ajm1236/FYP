@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 
 [RequireComponent(typeof(AudioSource))]
 [System.Serializable]
@@ -15,6 +16,7 @@ public class Sound
     public float ranVol = 0.1f;
     public AudioClip clip;
     public static float[] samples = new float[512];
+    public AudioMixerGroup grouped;
 
     public bool isLoop = false;
 
@@ -25,6 +27,7 @@ public class Sound
         a = source;
         a.clip = clip;
         a.GetSpectrumData(samples, 0, FFTWindow.Blackman);
+        a.outputAudioMixerGroup = grouped;
         a.loop = isLoop;
     }
 

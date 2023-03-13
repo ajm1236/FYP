@@ -18,12 +18,12 @@ public class SpriteCharacter : MonoBehaviour
     public bool isCooldownJump, isCooldownWalk, isCooldownBuff;
     bool grounded = false;
 
-    [SerializeField] private Rigidbody2D body;
+    public Rigidbody2D body;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
     Transform playerRender;
     Animator animate;
-    AudioController controller;
+    public AudioController controller;
     TrailRenderer trail;
 
     void Awake()
@@ -84,6 +84,7 @@ public class SpriteCharacter : MonoBehaviour
             trail.enabled = true;
             StartCoroutine(BuffCooldown());
         }
+
     }
 
     private void FixedUpdate()

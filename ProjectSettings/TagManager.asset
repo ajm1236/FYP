@@ -7,6 +7,11 @@ TagManager:
   - GS
   - Weak Point
   - Damage
+  - Kerry
+  - Dublin
+  - Water
+  - PlayerRenderer
+  - Mayo
   layers:
   - Default
   - TransparentFX
@@ -46,6 +51,9 @@ TagManager:
     locked: 0
   - name: Background
     uniqueID: 2386374733
+    locked: 0
+  - name: Platform
+    uniqueID: 1428108033
     locked: 0
   - name: Particle
     uniqueID: 3499597785

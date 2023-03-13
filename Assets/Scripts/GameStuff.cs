@@ -1,15 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameStuff : MonoBehaviour
 {
     public static GameStuff gameStuff;
     public Transform player, spawn, spawnEffect;
-    public string soundName; 
+    public string soundName;
+    public AudioController controller;
+
     [SerializeField]
     private GameObject gameOverUI;
-    private AudioController controller;
 
     void Awake()
     {
@@ -21,7 +23,7 @@ public class GameStuff : MonoBehaviour
         controller = AudioController.controller;
         if(controller == null)
         {
-            Debug.LogError("Lol theres no one to control the audio what are we going to do :(");
+            controller = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>(); ;
         }
     }
 
@@ -37,7 +39,6 @@ public class GameStuff : MonoBehaviour
         //Debug.Log("player Destroyed");
         gameStuff.EndGame();
         //gameStuff.StartCoroutine(gameStuff.RespawnPlayer());
-
     }
 
     public static void DestroyEnemy(EnemyInfo enemy)

@@ -10,9 +10,9 @@ public class MenuManager : MonoBehaviour
     private void Start()
     {
         controller = AudioController.controller;
-        if(controller == null)
+        if (controller == null)
         {
-            Debug.LogError("No AudioController instance found");
+            controller = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>(); ;
         }
         controller.Boombox("MenuMusic");
 

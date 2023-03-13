@@ -17,7 +17,7 @@ public class Turret : MonoBehaviour
     Vector2 direction;
     void Start()
     {
-        
+        transform.position = this.transform.position;
     }
 
     // Update is called once per frame
