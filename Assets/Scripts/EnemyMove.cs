@@ -26,7 +26,7 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
        
-        if(Vector2.Distance(transform.position, player.position) < trackDistance)
+        if(Vector2.Distance(transform.position, player.position) < trackDistance && isTracking)
         {
             
             if (transform.position.x > player.position.x)

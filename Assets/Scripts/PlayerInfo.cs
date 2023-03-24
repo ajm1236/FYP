@@ -9,17 +9,6 @@ public class PlayerInfo : MonoBehaviour
     {
         public float currentHealth;
         public float maxHealth = 1f;
-        //private int _currentHealth;
-        //public int currentHealth
-        //{
-        //    get { return _currentHealth;  }
-        //    set { _currentHealth = Mathf.Clamp(value, 0, maxHealth); }
-        //}
-
-        //public void Init()
-        //{
-        //    currentHealth = maxHealth;
-        //}
 
     }
     public PlayerStatus playerStatus = new PlayerStatus();

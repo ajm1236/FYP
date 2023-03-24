@@ -10,7 +10,6 @@ public class HitEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Weak Point") 
         {
             Destroy(collision.gameObject);
-            Debug.Log("hmmmmm");
         }
     }
 

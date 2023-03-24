@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,24 +6,24 @@ public class MenuManager : MonoBehaviour
 {
 
     AudioController controller;
-    private void Start()
+    private void Awake()
     {
+
         controller = AudioController.controller;
         if (controller == null)
         {
             controller = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>(); ;
         }
         controller.Boombox("MenuMusic");
-
-
     }
+
     public Animator fade;
     public float fadeTime = 1f;
     public void GameStart()
     {
-        //SceneManager.LoadScene("Game");
         controller.ByeBoombox("MenuMusic");
         StartCoroutine(FadeLevel());
+        controller.Boombox("Background");
     }
 
     public void GameQuit()

@@ -58,7 +58,7 @@ public class Turret : MonoBehaviour
         }
     }
 
-    void Shoot()
+    public void Shoot()
     {
         GameObject inst = Instantiate(bullet, firePoint.position, Quaternion.identity);
         inst.GetComponent<Rigidbody2D>().AddForce(direction * force);

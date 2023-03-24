@@ -5,8 +5,6 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pause;
     public static bool isPaused;
-    AudioController controller;
-
     private void Start()
     {
         pause.SetActive(false);
@@ -53,3 +51,4 @@ public class PauseMenu : MonoBehaviour
     }
 
 }
+

@@ -9,10 +9,7 @@ public class MovePlatform : MonoBehaviour
     public float speed = 5f;
     public int targetPos;
     public PlayerInfo player;
-    bool moving;
 
-
-    // Update is called once per frame
     void Update()
     {
         try { 
@@ -26,12 +23,10 @@ public class MovePlatform : MonoBehaviour
                 targetPos = 0;
             }
         }
-        catch(Exception ex)
+        catch
         {
             return;
         }
-        
-        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -39,10 +34,8 @@ public class MovePlatform : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             collision.collider.attachedRigidbody.interpolation = RigidbodyInterpolation2D.None;
-            //collision.collider.transform.SetParent(transform);
             player.transform.SetParent(transform);
         }
-
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -50,10 +43,7 @@ public class MovePlatform : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             collision.collider.attachedRigidbody.interpolation = RigidbodyInterpolation2D.Interpolate;
-            //collision.collider.transform.SetParent(null);
             player.transform.SetParent(null);
-
-
         }
     }
 }

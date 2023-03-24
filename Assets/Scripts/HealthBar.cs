@@ -5,12 +5,9 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    // Start is called before the first frame update
     private RectTransform bar;
     private Image barImage;
     public PlayerInfo player;
-
-
 
     void Awake()
     {

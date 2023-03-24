@@ -14,7 +14,7 @@ public class Bullet : MonoBehaviour
      void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>(); ;
-        bar = GameObject.FindGameObjectWithTag("Bar").GetComponent<HealthBar>(); ;
+        bar = GameObject.FindGameObjectWithTag("Bar").GetComponent<HealthBar>(); 
         camShake = GameStuff.gameStuff.GetComponent<Shake>();
         StartCoroutine(Timer());
     }

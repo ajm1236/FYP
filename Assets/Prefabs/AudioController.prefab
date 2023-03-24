@@ -30,7 +30,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6370182334567942937
 MonoBehaviour:
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - soundName: MenuMusic
-    volume: 0.1
+    volume: 1
     pitch: 1
     ranPit: 0
     ranVol: 0
@@ -85,3 +85,19 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eec53751c4e79a7469fc34e774360128, type: 3}
     grouped: {fileID: 24300002, guid: 5a4c32e719f105e43908b4a32bd3940f, type: 2}
     isLoop: 0
+  - soundName: Background
+    volume: 0.05
+    pitch: 1
+    ranPit: 0
+    ranVol: 0
+    clip: {fileID: 8300000, guid: cb8640b8c52417f43a827760bf9dc068, type: 3}
+    grouped: {fileID: 24300002, guid: 5a4c32e719f105e43908b4a32bd3940f, type: 2}
+    isLoop: 1
+  - soundName: End
+    volume: 0.5
+    pitch: 1
+    ranPit: 0
+    ranVol: 0
+    clip: {fileID: 8300000, guid: b5d5323ba4ca34f4ea8930a5c7b3b59d, type: 3}
+    grouped: {fileID: 24300002, guid: 5a4c32e719f105e43908b4a32bd3940f, type: 2}
+    isLoop: 1

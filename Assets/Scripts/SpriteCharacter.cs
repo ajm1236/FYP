@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpriteCharacter : MonoBehaviour
 {
-    private float hoz;
+    public float hoz;
     public float speed = 25f;
     public float jump = 40f;
     private bool isRight = true;
@@ -57,7 +57,6 @@ public class SpriteCharacter : MonoBehaviour
             if((grounded || dJump))
             {
                 animate.SetBool("Grounded", false);
-                //controller.Boombox("Jump");
                 body.velocity = new Vector2(body.velocity.x, dJump ? dJumpPower: jump);
                 dJump = !dJump;
                 if(!isCooldownJump)
@@ -87,7 +86,7 @@ public class SpriteCharacter : MonoBehaviour
 
     }
 
-    private void FixedUpdate()
+    public void FixedUpdate()
     {
         if (knockCount <= 0)
         {
@@ -106,7 +105,7 @@ public class SpriteCharacter : MonoBehaviour
             knockCount -= Time.deltaTime;
         }
         hoz = Input.GetAxisRaw("Horizontal");
-        grounded = Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
+        grounded = Physics2D.OverlapCircle(groundCheck.position, 0.8f, groundLayer);
         animate.SetBool("Grounded", grounded);
         animate.SetFloat("speed", Mathf.Abs(hoz));
         if (hoz > 0 && !isRight)
@@ -119,10 +118,7 @@ public class SpriteCharacter : MonoBehaviour
             Flip();
         }
     }
-    //private bool IsGrounded()
-    //{
-    //    return Physics2D.OverlapCircle(groundCheck.position, 0.1f, groundLayer);
-    //}
+
     void Flip()
     {
         Vector3 scale = transform.localScale;

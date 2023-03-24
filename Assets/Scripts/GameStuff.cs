@@ -9,9 +9,13 @@ public class GameStuff : MonoBehaviour
     public Transform player, spawn, spawnEffect;
     public string soundName;
     public AudioController controller;
+    public Timer time;
+    public RectTransform[] UI;
 
     [SerializeField]
     private GameObject gameOverUI;
+    [SerializeField]
+    private GameObject gameCompleteUI;
 
     void Awake()
     {
@@ -25,11 +29,29 @@ public class GameStuff : MonoBehaviour
         {
             controller = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>(); ;
         }
+        if(time == null)
+        {
+            time = GameObject.FindGameObjectWithTag("GS").GetComponent<Timer>(); ;
+        }
     }
 
     public void EndGame()
     {
         gameOverUI.SetActive(true);
+        time.StopTimer();
+    }
+
+    public void CompleteGame()
+    {
+        gameCompleteUI.SetActive(true);
+        time.StopTimer();
+        for(int i = 0; i < UI.Length; i++)
+        {
+            UI[i].position = new Vector3(100000, 100000, 10000);
+        }
+        controller.Boombox("End");
+        controller.ByeBoombox("Background");
+
     }
 
     public static void DestroyPlayer(PlayerInfo player)

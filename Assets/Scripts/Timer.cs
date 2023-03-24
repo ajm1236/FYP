@@ -9,11 +9,15 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timer;
     [Header("Timer Settings")]
     public float currTime;
+    public bool keepTime = true;
 
     private void Update()
     {
-        currTime = currTime += Time.deltaTime;
-        PrettyText();
+        if(keepTime)
+        {
+            currTime = currTime += Time.deltaTime;
+            PrettyText();
+        } 
     }
 
     void PrettyText()
@@ -24,4 +28,11 @@ public class Timer : MonoBehaviour
 
         timer.text = hours + ":" + minutes + ":" + seconds;
     }
+
+    public void StopTimer()
+    {
+        keepTime = false;
+    }
+
+
 }

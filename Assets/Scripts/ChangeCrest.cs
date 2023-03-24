@@ -9,11 +9,12 @@ public class ChangeCrest : MonoBehaviour
     public Sprite[] counties;
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.transform.tag == "Dublin")
+
+        if (collision.transform.tag == "Kerry")
         {
             crest.sprite = counties[0];
         }
-        if (collision.transform.tag == "Kerry")
+        if (collision.transform.tag == "Mayo")
         {
             crest.sprite = counties[1];
         }
