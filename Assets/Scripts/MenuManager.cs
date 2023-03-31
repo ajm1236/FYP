@@ -8,7 +8,6 @@ public class MenuManager : MonoBehaviour
     AudioController controller;
     private void Awake()
     {
-
         controller = AudioController.controller;
         if (controller == null)
         {
@@ -17,8 +16,11 @@ public class MenuManager : MonoBehaviour
         controller.Boombox("MenuMusic");
     }
 
-    public Animator fade;
+    public Animator fade; //fad animate the start of the game 
     public float fadeTime = 1f;
+
+    //the following enables sounds based on what the context is 
+
     public void GameStart()
     {
         controller.ByeBoombox("MenuMusic");

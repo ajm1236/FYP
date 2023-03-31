@@ -14,6 +14,7 @@ public class Shake : MonoBehaviour
             mainCamera = Camera.main;
         }
     }
+    //starts and ends shake based off function values
     public void CameraShake(float numberOf, float duration)
     {
         amount = numberOf;
@@ -26,7 +27,7 @@ public class Shake : MonoBehaviour
         if(amount > 0)
         {
             Vector3 pos = mainCamera.transform.position;
-            //offset values
+            //offset values for camera to move or "shake"
             float x = Random.value * amount * 2 - amount;
             float y = Random.value * amount * 2 - amount;
             pos.x += x;
@@ -38,6 +39,6 @@ public class Shake : MonoBehaviour
     void EndShake()
     {
         CancelInvoke("StartShake");
-        mainCamera.transform.localPosition = Vector3.zero;
+        mainCamera.transform.localPosition = Vector3.zero; //back to inital position after shake 
     }
 }

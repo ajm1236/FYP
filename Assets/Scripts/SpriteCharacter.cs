@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SpriteCharacter : MonoBehaviour
@@ -21,7 +20,6 @@ public class SpriteCharacter : MonoBehaviour
     public Rigidbody2D body;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
-    Transform playerRender;
     Animator animate;
     public AudioController controller;
     TrailRenderer trail;
@@ -31,7 +29,6 @@ public class SpriteCharacter : MonoBehaviour
         trail = GetComponent<TrailRenderer>();
         trail.enabled = false;
         animate = GetComponent<Animator>();
-        playerRender = transform.Find("PlayerRenderer");
     }
 
     void Start()
@@ -47,17 +44,20 @@ public class SpriteCharacter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // if player on ground and hgasnt jumped = no double jump
         if(grounded && !Input.GetButton("Jump"))
         {
             dJump = false;
         }
 
+        //player jumps
         if (Input.GetButtonDown("Jump"))
         {
+            //player is either on ground or mid air able to double jump
             if((grounded || dJump))
             {
                 animate.SetBool("Grounded", false);
-                body.velocity = new Vector2(body.velocity.x, dJump ? dJumpPower: jump);
+                body.velocity = new Vector2(body.velocity.x, dJump ? dJumpPower: jump); //applies jump force depending on if its double jump or not
                 dJump = !dJump;
                 if(!isCooldownJump)
                 {
@@ -67,17 +67,20 @@ public class SpriteCharacter : MonoBehaviour
             }
         }
 
+        // way of slowing player as jump continues
         if (Input.GetButtonUp("Jump") && body.velocity.y > 0f)
         {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y * 0.6f);
         }
 
+        //plays walk sound
         if(!isCooldownWalk && grounded && (Input.GetKey(KeyCode.A)  || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.LeftArrow)))
         {
             controller.Boombox("Walk");
             StartCoroutine(WalkCooldown());
         }
 
+        //for speed boost 
         if(speed > 25)
         {
             trail.enabled = true;
@@ -90,10 +93,12 @@ public class SpriteCharacter : MonoBehaviour
     {
         if (knockCount <= 0)
         {
+            //regular ewalking 
             body.velocity = new Vector2(hoz * speed, body.velocity.y);
         }
         else
         {
+            //knocking the player back if enemy hits them by some units
             if (knockRight == true)
             {
                 body.velocity = new Vector2(-knockForce + 5, knockForce/2);
@@ -104,14 +109,13 @@ public class SpriteCharacter : MonoBehaviour
             }
             knockCount -= Time.deltaTime;
         }
-        hoz = Input.GetAxisRaw("Horizontal");
+        hoz = Input.GetAxisRaw("Horizontal"); //wasd + arrow keys
         grounded = Physics2D.OverlapCircle(groundCheck.position, 0.8f, groundLayer);
-        animate.SetBool("Grounded", grounded);
-        animate.SetFloat("speed", Mathf.Abs(hoz));
+        animate.SetBool("Grounded", grounded); //used for jump animation 
+        animate.SetFloat("speed", Mathf.Abs(hoz)); //used for walk animation 
         if (hoz > 0 && !isRight)
         {
             Flip();
-
         }
         if(hoz < 0 && isRight)
         {
@@ -119,6 +123,7 @@ public class SpriteCharacter : MonoBehaviour
         }
     }
 
+    //flips player so faces right direction 
     void Flip()
     {
         Vector3 scale = transform.localScale;
@@ -127,6 +132,7 @@ public class SpriteCharacter : MonoBehaviour
         isRight = !isRight;
     }
 
+    //cooldowns for different contexts
     IEnumerator JumpCooldown(float cooldownTime)
     {
         isCooldownJump = true;

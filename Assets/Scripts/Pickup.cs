@@ -8,6 +8,7 @@ public class Pickup : MonoBehaviour
     public HealthBar bar;
     public PlayerInfo health;
 
+    //for regaulr power ups to be able to be "picked up"
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")

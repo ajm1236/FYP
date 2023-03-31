@@ -7,6 +7,7 @@ public class ChangeCrest : MonoBehaviour
 {
     public Image crest;
     public Sprite[] counties;
+    // when collided with, change county crest
     private void OnTriggerEnter2D(Collider2D collision)
     {
 

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -10,15 +8,12 @@ public class CameraFollow : MonoBehaviour
     public float aheadMove = 0.1f;
     public float cameraDeathPos = -1;
     public float smooth = 0.2f;
-
     float offset;
     float findTime = 0;
-
     Vector3 velocity;
     Vector3 lastPos;
     Vector3 aheadPos;
     
-    // Start is called before the first frame update
     void Start()
     {
         lastPos = target.position;
@@ -26,7 +21,6 @@ public class CameraFollow : MonoBehaviour
         transform.parent = null;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(target == null)
@@ -39,6 +33,7 @@ public class CameraFollow : MonoBehaviour
         float moveX = target.position.x - lastPos.x;
         bool aheadTarget = Mathf.Abs(moveX) > aheadMove;
 
+        //adding camera movement that moves the camera slightly ahead of the player when they are moving in that direction 
         if(aheadTarget)
         {
             aheadPos = ahead * Mathf.Sign(moveX) * Vector3.right;
@@ -56,6 +51,7 @@ public class CameraFollow : MonoBehaviour
         lastPos = target.position;
     }
 
+    //finds player if player is destroyed
     void GetNewPlayer()
     { 
         if(findTime <= Time.time)

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BossShoot : MonoBehaviour
@@ -9,18 +7,14 @@ public class BossShoot : MonoBehaviour
     PlayerInfo player;
     float timer;
     public float radius;
-    // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInfo>(); 
     }
 
-    // Update is called once per frame
     void Update()
-    {
-
-        float distance = Vector2.Distance(transform.position, player.transform.position);
-
+    { 
+        float distance = Vector2.Distance(transform.position, player.transform.position); // calculate player distance 
         if(distance < radius)
         {
             timer += Time.deltaTime;
@@ -34,6 +28,6 @@ public class BossShoot : MonoBehaviour
     }
     public void Shoot()
     {
-        Instantiate(bullet, firePoint.position, Quaternion.identity);
+        Instantiate(bullet, firePoint.position, Quaternion.identity); // instantiate a bullet with relative rotation (adjusts rotation in direction its heading)
     }
 }

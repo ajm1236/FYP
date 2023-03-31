@@ -10,6 +10,7 @@ public class MovePlatform : MonoBehaviour
     public int targetPos;
     public PlayerInfo player;
 
+    // tries to move platform to next waypoint over a certain amount of time
     void Update()
     {
         try { 
@@ -29,6 +30,8 @@ public class MovePlatform : MonoBehaviour
         }
     }
 
+    // sets the interpolation of player rigidbody to none so the player can freely move on platform
+    // sets player as child of platform to allow platform to carry player
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.transform.tag == "Player")
@@ -38,6 +41,7 @@ public class MovePlatform : MonoBehaviour
         }
     }
 
+    //opposite of above to set everything back to normal
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.transform.tag == "Player")

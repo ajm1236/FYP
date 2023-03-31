@@ -23,8 +23,8 @@ public class GameStuff : MonoBehaviour
         {
             gameStuff = GameObject.FindGameObjectWithTag("GS").GetComponent<GameStuff>(); ;
         }
-        Instantiate(spawnEffect, spawn.position, spawn.rotation);
-        controller = AudioController.controller;
+        Instantiate(spawnEffect, spawn.position, spawn.rotation); //spawn particle effect 
+        controller = AudioController.controller; // set audio controller
         if(controller == null)
         {
             controller = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioController>(); ;
@@ -35,12 +35,14 @@ public class GameStuff : MonoBehaviour
         }
     }
 
+    //enable game over UI when called
     public void EndGame()
     {
         gameOverUI.SetActive(true);
         time.StopTimer();
     }
 
+    //disable regular UI and set game complete UI
     public void CompleteGame()
     {
         gameCompleteUI.SetActive(true);
@@ -54,13 +56,11 @@ public class GameStuff : MonoBehaviour
 
     }
 
+    //destory player 
     public static void DestroyPlayer(PlayerInfo player)
     {
-        //controller.Boombox(soundName);
         Destroy(player.gameObject);
-        //Debug.Log("player Destroyed");
         gameStuff.EndGame();
-        //gameStuff.StartCoroutine(gameStuff.RespawnPlayer());
     }
 
     public static void DestroyEnemy(EnemyInfo enemy)

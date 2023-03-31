@@ -16,24 +16,26 @@ public class GameOver : MonoBehaviour
         displayTimer.text = timer.text;
 
     }
+    //turn music off when game over screen is navigated away from 
     public void OnDisable()
     {
         controller.ByeBoombox("End");
 
     }
+    //turn off background music when game ends
     public void OnEnable()
     {
         controller.ByeBoombox("Background");
 
     }
-
+    // load menu scene and turn menu music on
     public void Exit()
     {
         controller.Boombox("MenuMusic");
         SceneManager.LoadScene("Menu_Screen");
 
     }
-
+    // restart game music and load game
     public void Restart()
     {
         controller.Boombox("Background");

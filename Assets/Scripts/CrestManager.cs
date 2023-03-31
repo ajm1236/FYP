@@ -13,6 +13,7 @@ public class CrestManager : MonoBehaviour
     {
         return crests[Random.Range(0, crests.Length - 1)];
     }
+    //adds random counties to the screen every time its called
     public void Start()
     {
         for(int i = 0; i < crests.Length; i++)

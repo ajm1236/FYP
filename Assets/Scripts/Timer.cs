@@ -13,15 +13,15 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        if(keepTime)
+        if (keepTime)
         {
-            currTime = currTime += Time.deltaTime;
+            currTime = currTime += Time.deltaTime; // calculate time passed
             PrettyText();
-        } 
+        }
     }
-
     void PrettyText()
     {
+        // calculating the different mesaurements for stopwatch
         string hours = Mathf.Floor(currTime / 3600).ToString("0");
         string minutes = Mathf.Floor(currTime / 60).ToString("00");
         string seconds = (currTime % 60).ToString("00");

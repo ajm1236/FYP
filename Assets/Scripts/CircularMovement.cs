@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CircularMovement : MonoBehaviour
@@ -16,6 +14,7 @@ public class CircularMovement : MonoBehaviour
     }
     void Update()
     {
+        // maths equation to create a direction for the platform that makes it move in a circular postion around a center
         angle += Time.deltaTime * angularSpeed;
         Vector3 direction = Quaternion.AngleAxis(angle, Vector3.forward) * Vector2.up;
         transform.position = center.position + (direction * radius);

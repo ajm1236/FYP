@@ -20,18 +20,18 @@ public class Turret : MonoBehaviour
         transform.position = this.transform.position;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        // calculate player position 
         Vector2 targetPos = player.position;
         direction = targetPos - (Vector2)transform.position;
-        RaycastHit2D ray = Physics2D.Raycast(transform.position, direction, radius);
-
-        if(ray)
+        RaycastHit2D ray = Physics2D.Raycast(transform.position, direction, radius); // emits "ray" to find player, if found turret becomes active
+        if (ray)
         {
             if (ray.collider.gameObject.CompareTag("Player"))
             {
-                if(inRange == false)
+                if (inRange == false)
                 {
                     inRange = true;
                     alarm.GetComponent<SpriteRenderer>().color = Color.red;
@@ -47,17 +47,17 @@ public class Turret : MonoBehaviour
             }
         }
 
-        if(inRange)
+        if (inRange)
         {
-            gun.transform.up = -direction;
-            if(Time.time> shootTime)
+            gun.transform.up = -direction; //move gun part toward player
+            if (Time.time > shootTime)
             {
-                shootTime = Time.time +1 / fireRate;
+                shootTime = Time.time + 1 / fireRate;
                 Shoot();
             }
         }
     }
-
+    //creates and moves a bullet toward player
     public void Shoot()
     {
         GameObject inst = Instantiate(bullet, firePoint.position, Quaternion.identity);

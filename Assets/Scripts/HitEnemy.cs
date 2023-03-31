@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HitEnemy : MonoBehaviour
 {
-    // Update is called once per frame
+    // feet collide with this and destroy the enemy 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Weak Point") 
@@ -12,6 +10,4 @@ public class HitEnemy : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-
-
 }

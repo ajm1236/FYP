@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
+        // when collide with player it will damage them, shake camera, and destory itself so it doesnt hang about and hit player again
         if(collision.gameObject.tag == "Player")
         {
             player.HitPlayer(damage);

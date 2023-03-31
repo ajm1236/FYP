@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerInfo : MonoBehaviour
 {
+    //contains plaeyr health, max health, etc
     [System.Serializable]
     public class PlayerStatus 
     {
@@ -25,6 +26,7 @@ public class PlayerInfo : MonoBehaviour
         playerStatus.currentHealth = playerStatus.maxHealth;
     }
 
+    //way of destorying player from falling,
     private void Update()
     {
         if(transform.position.y <= fallDeath)
@@ -37,7 +39,7 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-
+    //way of player receiving damage
     public void HitPlayer(float damage)
     {
         playerStatus.currentHealth -= damage;

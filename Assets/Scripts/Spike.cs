@@ -16,12 +16,14 @@ public class Spike : MonoBehaviour
     public HealthBar bar;
     public Shake camShake;
 
+    //slows player down in spikes 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         movement.speed = movement.speed / 2f;
         movement.jump = movement.jump / 1.2f;
     }
 
+    //deals damage on a cooldown basis 
     private void OnCollisionStay2D(Collision2D collision)
     {
         if (Time.time - _lastAttack < cooldown) return;
@@ -36,6 +38,7 @@ public class Spike : MonoBehaviour
         }
     }
 
+    //reset movement speeds
     private void OnCollisionExit2D(Collision2D collision)
     {
         movement.speed = movement.speed * 2f;

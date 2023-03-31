@@ -25,7 +25,7 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+        // move the enemy toward player if within range
         if(Vector2.Distance(transform.position, player.position) < trackDistance && isTracking)
         {
             
@@ -41,7 +41,7 @@ public class EnemyMove : MonoBehaviour
                 transform.position += Vector3.right * speed * Time.deltaTime;
             }
         }
-        else
+        else // move between waypoints if not in range of player
         { 
             transform.position = Vector2.MoveTowards(transform.position, waypoints[targetPos].position, speed * Time.deltaTime);
             if (Vector2.Distance(transform.position, waypoints[targetPos].position) < 0.5f)

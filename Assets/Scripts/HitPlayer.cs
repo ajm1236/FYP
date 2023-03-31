@@ -11,6 +11,7 @@ public class HitPlayer : MonoBehaviour
     public SpriteCharacter movement;
     public float cooldown = 0.8f;
 
+    // deal damage and enable knockback to player
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
